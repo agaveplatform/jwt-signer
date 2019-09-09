@@ -1,0 +1,6 @@
+--alias=mykey
+--keypass=changeit
+--storepass=changeit
+--tenant=sandbox
+--username=testuser
+ ./example.jks
