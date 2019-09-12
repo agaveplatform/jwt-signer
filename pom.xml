@@ -13,7 +13,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.plugin.version>3.5</maven.compiler.plugin.version>
+        <maven.shade.plugin.version>3.2.1</maven.shade.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <app.main.class>org.agaveplatform.auth.JwtGenerator</app.main.class>
     </properties>
 
     <dependencies>
@@ -74,17 +76,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven.shade.plugin.version}</version>
                 <executions>
                     <execution>
+                        <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.agaveplatform.auth.JwtGenerator</mainClass>
+                                    <mainClass>${app.main.class}</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
