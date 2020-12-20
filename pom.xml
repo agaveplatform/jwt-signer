@@ -15,7 +15,8 @@
         <maven.compiler.plugin.version>3.5</maven.compiler.plugin.version>
         <maven.shade.plugin.version>3.2.1</maven.shade.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <app.main.class>org.agaveplatform.auth.JwtGenerator</app.main.class>
+        <app.main.class.jwtgenerator>org.agaveplatform.auth.JwtGenerator</app.main.class.jwtgenerator>
+        <app.main.class.certreader>org.agaveplatform.auth.CertReader</app.main.class.certreader>
     </properties>
 
     <dependencies>
@@ -79,6 +80,7 @@
                 <version>${maven.shade.plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>jwtgenerator</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
@@ -87,9 +89,25 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>${app.main.class}</mainClass>
+                                    <mainClass>${app.main.class.jwtgenerator}</mainClass>
                                 </transformer>
                             </transformers>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>certreader</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation=
+                                                     "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>${app.main.class.certreader}</mainClass>
+                                </transformer>
+                            </transformers>
+                            <finalName>agave-certreader-${project.version}</finalName>
                         </configuration>
                     </execution>
                 </executions>

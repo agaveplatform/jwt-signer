@@ -52,10 +52,10 @@ public class AgaveJWT {
         // Prepare JWT with claims set
 
         String[] roles = new String[]{
-                "Internal/" + tenantId + "-services-admin",
-                "Internal/" + tenantId + "-tenant-admin",
-                "Internal/" + tenantId + "-user-account-manager",
-                "Internal/" + tenantId + "-impersonator",
+//                "Internal/" + tenantId + "-services-admin",
+//                "Internal/" + tenantId + "-tenant-admin",
+//                "Internal/" + tenantId + "-user-account-manager",
+//                "Internal/" + tenantId + "-impersonator",
                 "Internal/everyone",
                 "Internal/" + tenantId + "_" + username + "_DefaultApplication_PRODUCTION"
         };
